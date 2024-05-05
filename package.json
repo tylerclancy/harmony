@@ -1,0 +1,24 @@
+{
+  "name": "harmony",
+  "version": "1.0.0",
+  "description": "A multi-purpose Discord bot, built using discord.js v14",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerclancy/harmony.git"
+  },
+  "author": "Tyler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylerclancy/harmony/issues"
+  },
+  "homepage": "https://github.com/tylerclancy/harmony#readme",
+  "dependencies": {
+    "discord.js": "^14.15.1",
+    "dotenv": "^16.4.5"
+  }
+}
