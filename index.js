@@ -5,7 +5,9 @@ import { registerEvents } from './utils/eventHandler.js';
 
 config();
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+});
 client.commands = new Collection();
 
 registerCommands(client);

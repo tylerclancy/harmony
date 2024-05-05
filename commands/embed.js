@@ -8,15 +8,25 @@ import {
 export default {
   name: 'embed',
   description: 'Create and send an embed to a specified channel.',
+  requiredPermissions: ['ManageMessages'],
   options: [
     {
       name: 'channel',
       description: 'The channel to send the embed to.',
-      type: 7, // Channel type
+      type: 7,
       required: true,
     },
   ],
+
   async execute(interaction) {
+    if (!interaction.member.permissions.has(this.requiredPermissions)) {
+      return interaction.reply({
+        content: `You do not have the ${this.requiredPermissions} permission.`,
+        ephemeral: true,
+      });
+      return;
+    }
+
     const channelId = interaction.options.getChannel('channel').id;
 
     const modal = new ModalBuilder()

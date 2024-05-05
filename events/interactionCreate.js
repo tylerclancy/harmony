@@ -22,10 +22,9 @@ export default async function (client, interaction) {
         return;
       }
 
-      if (!channel.permissionsFor(interaction.user).has('SendMessages')) {
+      if (!channel.permissionsFor(interaction.user).has('ManageMessages')) {
         await interaction.reply({
-          content:
-            'You do not have permission to send messages in that channel.',
+          content: 'You do not have permission to use this command.',
           ephemeral: true,
         });
         return;
