@@ -10,6 +10,11 @@ export const registerEvents = async (client) => {
   for (const file of eventFiles) {
     const event = await import(`../events/${file}`);
     const eventName = file.split('.')[0];
-    client.on(eventName, event.default.bind(null, client));
+
+    if (eventName === 'guildMemberAdd') {
+      client.on(eventName, (member) => event.default(client, member));
+    } else {
+      client.on(eventName, event.default.bind(null, client));
+    }
   }
 };
