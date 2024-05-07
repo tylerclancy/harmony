@@ -14,8 +14,8 @@ export const registerCommands = async (client) => {
 
   for (const file of commandFiles) {
     const command = await import(`../commands/${file}`);
-    commands.push(command.default);
-    client.commands.set(command.default.name, command.default);
+    commands.push(command.default.data.toJSON());
+    client.commands.set(command.default.data.name, command.default);
   }
 
   const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);

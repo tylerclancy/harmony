@@ -3,20 +3,20 @@ import {
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
+  SlashCommandBuilder,
 } from 'discord.js';
 
 export default {
-  name: 'embed',
-  description: 'Create and send an embed to a specified channel.',
+  data: new SlashCommandBuilder()
+    .setName('embed')
+    .setDescription('Create and send an embed to a specified channel.')
+    .addChannelOption((option) =>
+      option
+        .setName('channel')
+        .setDescription('The channel to send the embed to.')
+        .setRequired(true)
+    ),
   requiredPermissions: ['ManageMessages'],
-  options: [
-    {
-      name: 'channel',
-      description: 'The channel to send the embed to.',
-      type: 7,
-      required: true,
-    },
-  ],
 
   async execute(interaction) {
     if (!interaction.member.permissions.has(this.requiredPermissions)) {
